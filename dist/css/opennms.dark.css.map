@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "opennms.dark.css",
+	"sources": [
+		"../../src/sass/opennms.dark.scss",
+		"../../src/sass/opennms.scss",
+		"../../src/sass/base/_config.scss",
+		"../../src/sass/components/modal.scss"
+	],
+	"mappings": "AEAA,cAAc,CAAC;EACb,KAAK,EAAE,KAAM,GACd;;AAED,YAAY,CAAC;EACX,KAAK,EAAE,OAAG,GACX;;AAED,WAAW,CAAC,WAAW,CAAC;EACtB,WAAW,EAAE,GAAI,GAClB;;AAED,KAAK,CAAC;EACJ,gBAAgB,EAAE,OAAQ,GAC3B;;AAED,eAAe,CAAC;EACd,OAAO,EAAE,KAAM;EACf,MAAM,EAAE,KAAM;EACd,UAAU,EAAE,MACb,GAAC;;ACpBF,eAAe,CAAC;EACd,OAAO,EAAE,KAAM;EACf,MAAM,EAAE,KAAM;EACd,UAAU,EAAE,MAAO;EACnB,UAAU,EAAE,MAAO,GACpB;;AAED,eAAe,CAAC,MAAM,CAAC;EACrB,KAAK,EAAE,IAAK;EACZ,WAAW,EAAE,GAAI;EACjB,YAAY,EAAE,GAAI,GACnB",
+	"names": []
+}

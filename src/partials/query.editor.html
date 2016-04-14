@@ -1,0 +1,226 @@
+<query-editor-row ctrl="ctrl">
+    <ul class="tight-form-list">
+        <li class="tight-form-item query-keyword">
+            Type
+        </li>
+        <li>
+            <select class="tight-form-input input-xlarge"
+                    ng-model="ctrl.target.type"
+                    ng-blur="ctrl.targetBlur()">
+                <option data-ng-repeat="(key, value) in ctrl.types" value="{{ value }}">{{ key }}</option>
+            </select>
+        </li>
+    </ul>
+
+    <ul class="tight-form-list pull-right">
+        <li class="tight-form-item">
+            <a bs-tooltip="ctrl.target.error"
+               class="input-error"
+               ng-show="ctrl.target.error">
+                <i class="fa fa-warning"></i>
+            </a>
+        </li>
+    </ul>
+</query-editor-row>
+
+<div ng-show="ctrl.target.type === 'attribute'">
+    <div class="tight-form">
+        <ul class="tight-form-list">
+            <li>
+                <a class="tight-form-item query-keyword tight-form-align"
+                   ng-click="ctrl.openNodeSelectionModal();"
+                   role="menuitem">
+                    Node <i class="fa fa-tree"></i>
+                </a>
+            </li>
+            <li>
+                <input type="text"
+                       class="tight-form-input input-xlarge"
+                       ng-model="ctrl.target.nodeId"
+                       spellcheck='false'
+
+                       placeholder="node id"
+                       data-min-length=0 data-items=100
+                       ng-blur="ctrl.targetBlur()"
+                >
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="tight-form" ng-show="ctrl.target.nodeId">
+        <ul class="tight-form-list">
+            <li>
+                <a class="tight-form-item query-keyword tight-form-align"
+                   ng-click="ctrl.openResourceSelectionModal();"
+                   role="menuitem">
+                    Resource <i class="fa fa-leaf"></i>
+                </a>
+            </li>
+            <li>
+                <input type="text"
+                       class="tight-form-input input-xlarge"
+                       ng-model="ctrl.target.resourceId"
+                       spellcheck='false'
+
+                       placeholder="resource id"
+                       data-min-length=0 data-items=100
+                       ng-blur="ctrl.targetBlur()"
+                >
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+
+    <div ng-show="ctrl.target.resourceId">
+        <div class="tight-form">
+            <ul class="tight-form-list">
+                <li>
+                    <a class="tight-form-item query-keyword tight-form-align"
+                       ng-click="ctrl.openAttributeSelectionModal();"
+                       role="menuitem">
+                        Attribute <i class="fa fa-tag"></i>
+                    </a>
+                </li>
+                <li>
+                    <input type="text"
+                           class="tight-form-input input-xlarge"
+                           ng-model="ctrl.target.attribute"
+                           spellcheck='false'
+
+                           placeholder="resource id"
+                           data-min-length=0 data-items=100
+                           ng-blur="ctrl.targetBlur()"
+                    >
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="tight-form">
+            <ul class="tight-form-list">
+                <li class="tight-form-item query-keyword tight-form-align">
+                    Sub-Attribute <i class="fa fa-flash"></i>
+                </li>
+                <li>
+                    <input type="text"
+                           class="tight-form-input input-xlarge"
+                           ng-model="ctrl.target.subattribute"
+                           spellcheck='false'
+
+                           placeholder="subattribute"
+                           data-min-length=0 data-items=100
+                           ng-blur="ctrl.targetBlur()"
+                    >
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="tight-form">
+            <ul class="tight-form-list">
+                <li class="tight-form-item query-keyword tight-form-align">
+                    Aggregation <i class="fa fa-calculator"></i>
+                </li>
+                <li>
+                    <select class="tight-form-input input-xlarge"
+                            ng-model="ctrl.target.aggregation"
+                            ng-blur="ctrl.targetBlur()">
+                        <option value="AVERAGE">Average</option>
+                        <option value="MIN">Min</option>
+                        <option value="MAX">Max</option>
+                        <option value="LAST">Last</option>
+                    </select>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<div class="tight-form" ng-show="ctrl.target.type === 'expression'">
+    <ul class="tight-form-list">
+        <li class="tight-form-item query-keyword tight-form-align">
+            Expression <i class="fa fa-calculator"></i>
+        </li>
+        <li>
+            <input type="text"
+                   class="tight-form-input input-xxlarge"
+                   ng-model="ctrl.target.expression"
+                   spellcheck='false'
+                   placeholder="series expression"
+                   data-min-length=0 data-items=2048
+                   ng-blur="ctrl.targetBlur()"
+            />
+        </li>
+        <div class="clearfix"></div>
+    </ul>
+</div>
+
+<div ng-show="ctrl.target.type === 'filter'">
+    <div class="tight-form">
+        <ul class="tight-form-list">
+            <li>
+                <a class="tight-form-item query-keyword tight-form-align"
+                   ng-click="ctrl.openFilterSelectionModal();"
+                   role="menuitem">
+                    Filter <i class="fa fa-filter"></i>
+                </a>
+            </li>
+            <li>
+                <input type="text"
+                       class="tight-form-input input-xlarge"
+                       ng-model="ctrl.target.filter.name"
+                       spellcheck='false'
+
+                       placeholder="filter type name"
+                       data-min-length=0 data-items=100
+                       ng-blur="ctrl.targetBlur()"
+                />
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="tight-form" data-ng-repeat="param in ctrl.target.filter.parameter">
+        <ul class="tight-form-list">
+            <li class="tight-form-item query-keyword tight-form-align">
+                {{ param.displayName }}
+            </li>
+
+            <li>
+                <input type="text"
+                       class="tight-form-input input-xlarge"
+                       ng-model="ctrl.target.filterParameters[param.key]"
+                       spellcheck='false'
+                       placeholder="{{ param.default != null ? param.default : '' }}"
+                       data-min-length=0 data-items=100
+                       ng-blur="targetBlur()"
+                >
+            </li>
+
+            <li class="help-block">
+                {{ param.description }}
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="tight-form" ng-show="ctrl.target.type && ctrl.target.type !== 'filter'">
+    <ul class="tight-form-list">
+        <li class="tight-form-item query-keyword tight-form-align">
+            Label <i class="fa fa-font"></i>
+        </li>
+        <li>
+            <input type="text"
+                   class="tight-form-input input-xlarge"
+                   ng-model="ctrl.target.label"
+                   spellcheck='false'
+                   placeholder="series label"
+                   data-min-length=0 data-items=100
+                   ng-blur="ctrl.targetBlur()"
+            />
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
