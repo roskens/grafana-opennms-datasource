@@ -1,4 +1,4 @@
-## OpenNMS Datasource for Grafana [![Build Status](https://travis-ci.org/j-white/grafana-opennms-datasource.svg?branch=master)](https://travis-ci.org/j-white/grafana-opennms-datasource)
+## OpenNMS Datasource for Grafana [![Build Status](https://travis-ci.org/opennms/grafana-opennms-datasource.svg?branch=master)](https://travis-ci.org/opennms/grafana-opennms-datasource)
 
 Take a look at our [Wiki page](http://www.opennms.org/wiki/Grafana) for details on how to get started.
 
@@ -6,8 +6,10 @@ Take a look at our [Wiki page](http://www.opennms.org/wiki/Grafana) for details 
 
 ### v2.0.0
 
-* Added support for Grafana 3.0.0
+* Updated the datasource to be compatible with Grafan 3.0.0
 * Added support for sub-attributes used by some of the poller modules
+* Added support for metric queries
+* Added support for template variables in filter expression
 
 ### v1.1.0
 
