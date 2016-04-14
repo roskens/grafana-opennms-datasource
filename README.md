@@ -1,4 +1,4 @@
-## OpenNMS Datasource for Grafana [![Build Status](https://travis-ci.org/opennms/grafana-opennms-datasource.svg?branch=master)](https://travis-ci.org/opennms/grafana-opennms-datasource)
+## OpenNMS Datasource for Grafana [![Build Status](https://travis-ci.org/OpenNMS/grafana-opennms-datasource.svg?branch=master)](https://travis-ci.org/OpenNMS/grafana-opennms-datasource)
 
 Take a look at our [Wiki page](http://www.opennms.org/wiki/Grafana) for details on how to get started.
 
