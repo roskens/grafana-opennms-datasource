@@ -1,6 +1,6 @@
 {
   "name": "OpenNMS",
-  "id": "grafana-opennms-datasource",
+  "id": "opennms-datasource",
   "type": "datasource",
 
   "staticRoot": ".",
