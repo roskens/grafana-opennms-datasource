@@ -1,41 +1,30 @@
-<query-editor-row ctrl="ctrl">
-    <ul class="tight-form-list">
-        <li class="tight-form-item query-keyword">
-            Type
-        </li>
-        <li>
-            <select class="tight-form-input input-xlarge"
+<query-editor-row query-ctrl="ctrl" can-collapse="false">
+    <div class="gf-form-inline">
+        <div class="gf-form max-width-25">
+            <label class="gf-form-label query-keyword width-10">
+                Type
+                <label class="gf-form-label" bs-tooltip="ctrl.target.error" style="color: rgb(229, 189, 28)" ng-show="ctrl.target.error">
+                    <i class="fa fa-warning"></i>
+                </label>
+            </label>
+            <select class="gf-form-input"
                     ng-model="ctrl.target.type"
                     ng-blur="ctrl.targetBlur()">
                 <option data-ng-repeat="(key, value) in ctrl.types" value="{{ value }}">{{ key }}</option>
             </select>
-        </li>
-    </ul>
+        </div>
+    </div>
 
-    <ul class="tight-form-list pull-right">
-        <li class="tight-form-item">
-            <a bs-tooltip="ctrl.target.error"
-               class="input-error"
-               ng-show="ctrl.target.error">
-                <i class="fa fa-warning"></i>
-            </a>
-        </li>
-    </ul>
-</query-editor-row>
-
-<div ng-show="ctrl.target.type === 'attribute'">
-    <div class="tight-form">
-        <ul class="tight-form-list">
-            <li>
-                <a class="tight-form-item query-keyword tight-form-align"
+    <div ng-show="ctrl.target.type === 'attribute'">
+        <div class="gf-form-inline">
+            <div class="gf-form max-width-25">
+                <a class="gf-form-label query-keyword width-10"
                    ng-click="ctrl.openNodeSelectionModal();"
                    role="menuitem">
                     Node <i class="fa fa-tree"></i>
                 </a>
-            </li>
-            <li>
                 <input type="text"
-                       class="tight-form-input input-xlarge"
+                       class="gf-form-input"
                        ng-model="ctrl.target.nodeId"
                        spellcheck='false'
 
@@ -43,23 +32,17 @@
                        data-min-length=0 data-items=100
                        ng-blur="ctrl.targetBlur()"
                 >
-            </li>
-        </ul>
-        <div class="clearfix"></div>
-    </div>
-
-    <div class="tight-form" ng-show="ctrl.target.nodeId">
-        <ul class="tight-form-list">
-            <li>
-                <a class="tight-form-item query-keyword tight-form-align"
+            </div>
+        </div>
+        <div class="gf-form-inline" ng-show="ctrl.target.nodeId">
+            <div class="gf-form max-width-25">
+                <a class="gf-form-label query-keyword width-10"
                    ng-click="ctrl.openResourceSelectionModal();"
                    role="menuitem">
                     Resource <i class="fa fa-leaf"></i>
                 </a>
-            </li>
-            <li>
                 <input type="text"
-                       class="tight-form-input input-xlarge"
+                       class="gf-form-input"
                        ng-model="ctrl.target.resourceId"
                        spellcheck='false'
 
@@ -67,24 +50,18 @@
                        data-min-length=0 data-items=100
                        ng-blur="ctrl.targetBlur()"
                 >
-            </li>
-        </ul>
-        <div class="clearfix"></div>
-    </div>
-
-    <div ng-show="ctrl.target.resourceId">
-        <div class="tight-form">
-            <ul class="tight-form-list">
-                <li>
-                    <a class="tight-form-item query-keyword tight-form-align"
+            </div>
+        </div>
+        <div ng-show="ctrl.target.resourceId">
+            <div class="gf-form-inline">
+                <div class="gf-form max-width-25">
+                    <a class="gf-form-label query-keyword width-10"
                        ng-click="ctrl.openAttributeSelectionModal();"
                        role="menuitem">
                         Attribute <i class="fa fa-tag"></i>
                     </a>
-                </li>
-                <li>
                     <input type="text"
-                           class="tight-form-input input-xlarge"
+                           class="gf-form-input"
                            ng-model="ctrl.target.attribute"
                            spellcheck='false'
 
@@ -92,19 +69,15 @@
                            data-min-length=0 data-items=100
                            ng-blur="ctrl.targetBlur()"
                     >
-                </li>
-            </ul>
-            <div class="clearfix"></div>
-        </div>
-
-        <div class="tight-form">
-            <ul class="tight-form-list">
-                <li class="tight-form-item query-keyword tight-form-align">
-                    Sub-Attribute <i class="fa fa-flash"></i>
-                </li>
-                <li>
+                </div>
+            </div>
+            <div class="gf-form-inline">
+                <div class="gf-form max-width-25">
+                    <label class="gf-form-label query-keyword width-10">
+                        Sub-Attribute <i class="fa fa-flash"></i>
+                    </label>
                     <input type="text"
-                           class="tight-form-input input-xlarge"
+                           class="gf-form-input"
                            ng-model="ctrl.target.subattribute"
                            spellcheck='false'
 
@@ -112,18 +85,14 @@
                            data-min-length=0 data-items=100
                            ng-blur="ctrl.targetBlur()"
                     >
-                </li>
-            </ul>
-            <div class="clearfix"></div>
-        </div>
-
-        <div class="tight-form">
-            <ul class="tight-form-list">
-                <li class="tight-form-item query-keyword tight-form-align">
-                    Aggregation <i class="fa fa-calculator"></i>
-                </li>
-                <li>
-                    <select class="tight-form-input input-xlarge"
+                </div>
+            </div>
+            <div class="gf-form-inline">
+                <div class="gf-form max-width-25">
+                    <label class="gf-form-label query-keyword width-10">
+                        Aggregation <i class="fa fa-calculator"></i>
+                    </label>
+                    <select class="gf-form-input"
                             ng-model="ctrl.target.aggregation"
                             ng-blur="ctrl.targetBlur()">
                         <option value="AVERAGE">Average</option>
@@ -131,45 +100,37 @@
                         <option value="MAX">Max</option>
                         <option value="LAST">Last</option>
                     </select>
-                </li>
-            </ul>
-            <div class="clearfix"></div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="tight-form" ng-show="ctrl.target.type === 'expression'">
-    <ul class="tight-form-list">
-        <li class="tight-form-item query-keyword tight-form-align">
-            Expression <i class="fa fa-calculator"></i>
-        </li>
-        <li>
+    <div class="gf-form-inline" ng-show="ctrl.target.type === 'expression'">
+        <div class="gf-form max-width">
+            <label class="gf-form-label query-keyword width-10">
+                Expression <i class="fa fa-calculator"></i>
+            </label>
             <input type="text"
-                   class="tight-form-input input-xxlarge"
+                   class="gf-form-input max-width-30"
                    ng-model="ctrl.target.expression"
                    spellcheck='false'
                    placeholder="series expression"
                    data-min-length=0 data-items=2048
                    ng-blur="ctrl.targetBlur()"
             />
-        </li>
-        <div class="clearfix"></div>
-    </ul>
-</div>
+        </div>
+    </div>
 
-<div ng-show="ctrl.target.type === 'filter'">
-    <div class="tight-form">
-        <ul class="tight-form-list">
-            <li>
-                <a class="tight-form-item query-keyword tight-form-align"
+    <div ng-show="ctrl.target.type === 'filter'">
+        <div class="gf-form-inline">
+            <div class="gf-form max-width-25">
+                <a class="gf-form-label query-keyword width-10"
                    ng-click="ctrl.openFilterSelectionModal();"
                    role="menuitem">
                     Filter <i class="fa fa-filter"></i>
                 </a>
-            </li>
-            <li>
                 <input type="text"
-                       class="tight-form-input input-xlarge"
+                       class="gf-form-input"
                        ng-model="ctrl.target.filter.name"
                        spellcheck='false'
 
@@ -177,50 +138,42 @@
                        data-min-length=0 data-items=100
                        ng-blur="ctrl.targetBlur()"
                 />
-            </li>
-        </ul>
-        <div class="clearfix"></div>
-    </div>
-    <div class="tight-form" data-ng-repeat="param in ctrl.target.filter.parameter">
-        <ul class="tight-form-list">
-            <li class="tight-form-item query-keyword tight-form-align">
-                {{ param.displayName }}
-            </li>
+            </div>
+        </div>
 
-            <li>
+        <div class="gf-form-inline" data-ng-repeat="param in ctrl.target.filter.parameter">
+            <div class="gf-form max-width">
+                <label class="gf-form-label query-keyword width-10">
+                    {{ param.displayName }}
+                </label>
                 <input type="text"
-                       class="tight-form-input input-xlarge"
+                       class="gf-form-input width-18"
                        ng-model="ctrl.target.filterParameters[param.key]"
                        spellcheck='false'
                        placeholder="{{ param.default != null ? param.default : '' }}"
                        data-min-length=0 data-items=100
                        ng-blur="targetBlur()"
                 >
-            </li>
-
-            <li class="help-block">
-                {{ param.description }}
-            </li>
-        </ul>
-        <div class="clearfix"></div>
+                <div class="help-block">
+                    {{ param.description }}
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
-<div class="tight-form" ng-show="ctrl.target.type && ctrl.target.type !== 'filter'">
-    <ul class="tight-form-list">
-        <li class="tight-form-item query-keyword tight-form-align">
-            Label <i class="fa fa-font"></i>
-        </li>
-        <li>
+    <div class="gf-form-inline" ng-show="ctrl.target.type && ctrl.target.type !== 'filter'">
+        <div class="gf-form max-width-25">
+            <label class="gf-form-label query-keyword width-10">
+                Label <i class="fa fa-font"></i>
+            </label>
             <input type="text"
-                   class="tight-form-input input-xlarge"
+                   class="gf-form-input"
                    ng-model="ctrl.target.label"
                    spellcheck='false'
                    placeholder="series label"
                    data-min-length=0 data-items=100
                    ng-blur="ctrl.targetBlur()"
             />
-        </li>
-    </ul>
-    <div class="clearfix"></div>
-</div>
+        </div>
+    </div>
+</query-editor-row>
