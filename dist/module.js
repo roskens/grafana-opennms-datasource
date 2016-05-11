@@ -31,8 +31,8 @@ System.register(['./datasource', './query_ctrl', 'app/plugins/sdk'], function (_
       GenericQueryOptionsCtrl.templateUrl = 'partials/query.options.html';
 
       loadPluginCss({
-        dark: 'plugins/grafana-opennms-datasource/css/opennms.dark.css',
-        light: 'plugins/grafana-opennms-datasource/css/opennms.light.css'
+        dark: 'plugins/opennms-datasource/css/opennms.dark.css',
+        light: 'plugins/opennms-datasource/css/opennms.light.css'
       });
 
       _export('Datasource', OpenNMSDatasource);

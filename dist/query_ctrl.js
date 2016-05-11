@@ -219,7 +219,7 @@ System.register(['./modal_ctrl', './constants', 'app/plugins/sdk', 'lodash'], fu
             scope.result.promise.then(callback);
 
             var modal = this.$modal({
-              template: 'public/plugins/grafana-opennms-datasource/partials/modal.selection.html',
+              template: 'public/plugins/opennms-datasource/partials/modal.selection.html',
               persist: false,
               show: false,
               scope: scope,
@@ -261,6 +261,19 @@ System.register(['./modal_ctrl', './constants', 'app/plugins/sdk', 'lodash'], fu
             }
 
             return undefined;
+          }
+        }, {
+          key: 'getCollapsedText',
+          value: function getCollapsedText() {
+            if (this.target.type === QueryType.Attribute) {
+              return "Attribute: " + this.target.attribute;
+            } else if (this.target.type === QueryType.Expression) {
+              return "Expression: " + this.target.label;
+            } else if (this.target.type === QueryType.Filter) {
+              return "Filter: " + this.target.filter.name;
+            } else {
+              return "<Incomplete>";
+            }
           }
         }]);
 

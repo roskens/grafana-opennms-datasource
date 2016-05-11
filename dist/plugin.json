@@ -1,6 +1,6 @@
 {
   "name": "OpenNMS",
-  "id": "grafana-opennms-datasource",
+  "id": "opennms-datasource",
   "type": "datasource",
 
   "staticRoot": ".",
@@ -14,14 +14,20 @@
       "url": "http://www.opennms.org"
     },
     "links": [
-      {"name": "GitHub", "url": "https://github.com/opennms/grafana-opennms-datasource"}
+      {"name": "GitHub", "url": "https://github.com/opennms/grafana-opennms-datasource"},
+      {"name": "License", "url": "https://github.com/OpenNMS/grafana-opennms-datasource/blob/master/LICENSE"},
+      {"name": "The OpenNMS Project", "url": "http://www.opennms.org"}
     ],
     "logos": {
       "small": "img/opennms_globe.svg",
       "large": "img/opennms_globe.svg"
     },
-    "version": "2.0.0",
-    "updated": "2016-04-01"
+    "screenshots": [
+      {"name": "Query Editor", "path": "img/screenshot_query_editor.png"},
+      {"name": "Metric Query", "path": "img/screenshot_metric_query_nodes.png"}
+    ],
+    "version": "2.0.1",
+    "updated": "2016-05-11"
   },
 
   "dependencies": {
