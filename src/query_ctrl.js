@@ -199,6 +199,18 @@ export class OpenNMSQueryCtrl extends QueryCtrl {
 
     return undefined;
   }
+
+  getCollapsedText() {
+    if (this.target.type === QueryType.Attribute) {
+      return "Attribute: " + this.target.attribute;
+    } else if (this.target.type === QueryType.Expression) {
+      return "Expression: " + this.target.label;
+    } else if (this.target.type === QueryType.Filter) {
+      return "Filter: " + this.target.filter.name;
+    } else {
+      return "<Incomplete>";
+    }
+  }
 }
 
 OpenNMSQueryCtrl.templateUrl = 'partials/query.editor.html';
