@@ -25,6 +25,10 @@ Derive new series using
 
 ### Changelog
 
+##### 2.0.1 (05/11)
+
+* Updated query editor to use the updated Grafana 3.0.0 styles. Fixes [#2](https://github.com/OpenNMS/grafana-opennms-datasource/issues/2)
+
 ##### 2.0.0 (04/16)
 
 * Updated the datasource to be compatible with Grafana 3.0.0
