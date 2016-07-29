@@ -82,7 +82,8 @@ export class OpenNMSDatasource {
       url: this.url + '/rest/nodes',
       method: 'GET',
       params: {
-        filterRule: query
+        filterRule: query,
+        limit: 0
       }
     }).then(function (response) {
       if (response.data.count > response.data.totalCount) {
@@ -94,7 +95,7 @@ export class OpenNMSDatasource {
         if (node.foreignId !== null && node.foreignSource !== null) {
           nodeCriteria = node.foreignSource + ":" + node.foreignId;
         }
-        results.push({text: nodeCriteria, expandable: true});
+        results.push({text: node.label, value: nodeCriteria, expandable: true});
       });
       return results;
     });
