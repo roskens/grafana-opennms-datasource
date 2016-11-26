@@ -25,6 +25,11 @@ Derive new series using
 
 ### Changelog
 
+##### 2.0.2 (11/26)
+
+* Show the node label instead of the foreign source / foreign id when listing nodes as template variables. Fixes [#4](https://github.com/OpenNMS/grafana-opennms-datasource/issues/4)
+* Minor bug fixes
+
 ##### 2.0.1 (05/11)
 
 * Updated query editor to use the updated Grafana 3.0.0 styles. Fixes [#2](https://github.com/OpenNMS/grafana-opennms-datasource/issues/2)
