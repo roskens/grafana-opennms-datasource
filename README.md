@@ -6,7 +6,7 @@ This datasource enables users to query metrics collected and persisted by [OpenN
 
 #### Storage engine agnostic
 
-Retrieve metrics stored in any of the available persistence engines .i.e. rrdtool, JRobin and [Newts](https://github.com/OpenNMS/newts).
+Retrieve metrics stored in any of the available persistence engines i.e. rrdtool, JRobin and [Newts](https://github.com/OpenNMS/newts).
 
 #### Template support
 
