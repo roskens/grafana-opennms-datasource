@@ -9,6 +9,6 @@ After checking out the source tree, run:
     grunt
     grunt copy:deploy
 
-Once succesfuly, you can make change and have those deployed automatically using:
+Once successfully, you can make change and have those deployed automatically using:
 
     grunt watch:deploy
