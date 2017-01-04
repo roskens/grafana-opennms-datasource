@@ -123,7 +123,7 @@ System.register(['./modal_ctrl', './constants', 'app/plugins/sdk', 'lodash'], fu
 
               // Limit the results - it takes along time to render if there are too many
               var totalCount = filteredResources.length;
-              filteredResources = _.first(filteredResources, self.datasource.searchLimit);
+              filteredResources = _.take(filteredResources, self.datasource.searchLimit);
 
               return {
                 'count': filteredResources.length,

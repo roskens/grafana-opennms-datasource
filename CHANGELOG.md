@@ -1,6 +1,6 @@
 # 2.1.0 (01/04/17)
 
-* Support for Grafana 4
+* Add support for Grafana 4. Fixes [#7](https://github.com/OpenNMS/grafana-opennms-datasource/issues/7)
 
 # 2.0.2 (11/26/16)
 
