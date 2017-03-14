@@ -128,7 +128,8 @@ export class OpenNMSDatasource {
     var self = this,
       start = options.range.from.valueOf(),
       end = options.range.to.valueOf(),
-      step = Math.floor((end - start) / options.maxDataPoints);
+      step = Math.floor((end - start) / options.maxDataPoints),
+      scopedVars = options.scopedVars ? _.cloneDeep(options.scopedVars) : {};
 
     var query = {
       "start": start,
@@ -170,7 +171,7 @@ export class OpenNMSDatasource {
         }
 
         // Perform variable substitution - may generate additional queries
-        query.source = query.source.concat(self.interpolateSourceVariables(source, (interpolatedSource) => {
+        query.source = query.source.concat(self.interpolateSourceVariables(source, scopedVars, (interpolatedSource) => {
           // Calculate the effective resource id after the interpolation
           interpolatedSource.resourceId = OpenNMSDatasource.getRemoteResourceId(interpolatedSource.nodeId, interpolatedSource.resourceId);
           delete interpolatedSource.nodeId;
@@ -231,24 +232,53 @@ export class OpenNMSDatasource {
     return query;
   }
 
-  interpolateSourceVariables(source, callback) {
-    return this.interpolateVariables(source, ['nodeId', 'resourceId', 'attribute', 'datasource', 'label'], callback);
+  interpolateSourceVariables(source, scopedVars, callback) {
+    return this.interpolateVariables(source, scopedVars, ['nodeId', 'resourceId', 'attribute', 'datasource', 'label'], callback);
   }
 
   interpolateExpressionVariables(expression) {
-    return this.interpolateVariables(expression, ['value', 'label']);
+    return this.interpolateVariables(expression, {}, ['value', 'label']);
   }
 
   interpolateValue(value) {
-    return _.map(this.interpolateVariables({'value': value}, ['value']), function(entry) {
+    return _.map(this.interpolateVariables({'value': value}, {}, ['value']), function(entry) {
       return entry.value;
     });
   }
 
-  interpolateVariables(object, attributes, callback) {
+  interpolateVariables(object, scopedVars, attributes, callback) {
     // Reformat the variables to work with our interpolate function
-    var variables = [];
-    _.each(this.templateSrv.variables, function(templateVariable) {
+    var variables = {};
+    if (!_.isEmpty(scopedVars)) {
+      _.each(scopedVars, function (templateVariable, name) {
+        var variable = {
+          name: name,
+          value: []
+        };
+
+        // Single-valued?
+        if (_.isString(templateVariable.value)) {
+          variable.value.push(templateVariable.value);
+        } else {
+          _.each(templateVariable.value, function (value) {
+            if (value === "$__all") {
+              _.each(templateVariable.options, function (option) {
+                // "All" is part of the options, so make sure to skip that one
+                if (option.value !== "$__all") {
+                  variable.value.push(option.value);
+                }
+              });
+            } else {
+              variable.value.push(value);
+            }
+          });
+        }
+
+        variables.$name = variable;
+      });
+    }
+    _.each(this.templateSrv.variables, function (templateVariable) {
+      if (_.has(variables, templateVariable.name)) { return; }
       var variable = {
         name: templateVariable.name,
         value: []
@@ -258,9 +288,9 @@ export class OpenNMSDatasource {
       if (_.isString(templateVariable.current.value)) {
         variable.value.push(templateVariable.current.value);
       } else {
-        _.each(templateVariable.current.value, function(value) {
+        _.each(templateVariable.current.value, function (value) {
           if (value === "$__all") {
-            _.each(templateVariable.options, function(option) {
+            _.each(templateVariable.options, function (option) {
               // "All" is part of the options, so make sure to skip that one
               if (option.value !== "$__all") {
                 variable.value.push(option.value);
@@ -272,9 +302,9 @@ export class OpenNMSDatasource {
         });
       }
 
-      variables.push(variable);
+      variables[templateVariable.name] = variable;
     });
-    return interpolate(object, attributes, variables, callback);
+    return interpolate(object, attributes, _.values(variables), callback);
   }
 
   static processMeasurementsResponse(response) {
